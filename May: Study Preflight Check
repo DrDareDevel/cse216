@@ -1,7 +1,9 @@
 What data will you gather, and how will you analyze it? 
 
-Data to gather: user settings
+Data to gather: user settings for different house environment: dinner winter, dinner summer, 
 
-3-5 things that you'll measure: energy Consumption, Money savings, CO2 savings, User Confort
+3-5 things that you'll measure: Energy Consumption, Money savings, CO2 savings, User Confort(?)
 
+For each, how will you measure it, and what comparison will you perform with it?
 
+- Energy Consumption: based on the user settings, we will measure the energy consumption 
