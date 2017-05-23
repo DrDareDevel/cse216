@@ -1,3 +1,15 @@
 What data will you gather, and how will you analyze it? 
 
-Data to gather: energy consumption
+Data to gather: user settings for different house environment: dinner winter, dinner summer, peak hours summer, peak hours winter.
+
+3-5 things that you'll measure: Energy Consumption, Money savings, CO2 savings, User Confort(?)
+
+For each, how will you measure it, and what comparison will you perform with it?
+
+As already mentioned in the Final Abstract, we are going to have two situation, the control Group and the Treatment Group. People
+with the Control Group will set the house settings based on each scenario. We will calculate the Energy consumption accordingly.
+People in Treatment Group will set the house settings by considering also our Energy-Meter that will show an instant feedback of 
+Energy Consumption, Money Consumed and CO2 produced. 
+We will compare the Energy consumption produced in the two Groups and see if the people that have instant feedback will be ablke to sacrifice 
+a bit of confort for money saving and CO2 emission reduction. We will ask the Treatment group if the settings they use are still satysfying their
+confort and how much.
