@@ -7,22 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14B335EC1ED3BE75005A08FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B335EB1ED3BE75005A08FF /* Assets.xcassets */; };
 		14D5A3A91ED101F50024DBCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D5A3A81ED101F50024DBCF /* AppDelegate.swift */; };
 		14D5A3AB1ED101F50024DBCF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D5A3AA1ED101F50024DBCF /* FirstViewController.swift */; };
 		14D5A3AD1ED101F50024DBCF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D5A3AC1ED101F50024DBCF /* SecondViewController.swift */; };
 		14D5A3B01ED101F50024DBCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14D5A3AE1ED101F50024DBCF /* Main.storyboard */; };
-		14D5A3B21ED101F50024DBCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14D5A3B11ED101F50024DBCF /* Assets.xcassets */; };
 		14D5A3B51ED101F50024DBCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14D5A3B31ED101F50024DBCF /* LaunchScreen.storyboard */; };
 		14D5A3BD1ED1025A0024DBCF /* EnergyMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D5A3BC1ED1025A0024DBCF /* EnergyMeter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		14B335EB1ED3BE75005A08FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14D5A3A51ED101F50024DBCF /* CSE216.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSE216.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14D5A3A81ED101F50024DBCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14D5A3AA1ED101F50024DBCF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		14D5A3AC1ED101F50024DBCF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		14D5A3AF1ED101F50024DBCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		14D5A3B11ED101F50024DBCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		14D5A3B41ED101F50024DBCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14D5A3B61ED101F50024DBCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14D5A3BC1ED1025A0024DBCF /* EnergyMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyMeter.swift; sourceTree = "<group>"; };
@@ -62,8 +62,8 @@
 				14D5A3AA1ED101F50024DBCF /* FirstViewController.swift */,
 				14D5A3AC1ED101F50024DBCF /* SecondViewController.swift */,
 				14D5A3AE1ED101F50024DBCF /* Main.storyboard */,
-				14D5A3B11ED101F50024DBCF /* Assets.xcassets */,
 				14D5A3B31ED101F50024DBCF /* LaunchScreen.storyboard */,
+				14B335EB1ED3BE75005A08FF /* Assets.xcassets */,
 				14D5A3B61ED101F50024DBCF /* Info.plist */,
 				14D5A3BC1ED1025A0024DBCF /* EnergyMeter.swift */,
 			);
@@ -131,7 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D5A3B51ED101F50024DBCF /* LaunchScreen.storyboard in Resources */,
-				14D5A3B21ED101F50024DBCF /* Assets.xcassets in Resources */,
+				14B335EC1ED3BE75005A08FF /* Assets.xcassets in Resources */,
 				14D5A3B01ED101F50024DBCF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +312,7 @@
 				14D5A3BB1ED101F50024DBCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
