@@ -18,6 +18,10 @@
 	body {
     background-image: url("Home.png");
 	}
+	table, th, td {
+    border: 1px solid black;
+	text-align: center;
+	}
 		</style>
     </head>
     <body onload="draw(0);">
@@ -31,19 +35,35 @@
         <script src="js/main.js"></script>
 
         <div>
+		<table>
+		<tr>
+		  <th>Budget ($): <input type="text" name="Budget" id="Budget" value="100" onchange="redraw();"></th></tr>
+		  <tr>
+		  <th>
+		  Month: <input type="text" name="month" id="month" value="Summer" onchange="redraw();"></th></tr>
+		  <tr><th>
+		  Price ($): <input type="text" name="Price" id="Price" value="0.17 KW/h" onchange="redraw();"></th></tr>
+		  </table>
         <canvas class="canvas" id="myCanvas" width="350" height="350">
             Your browser does not support the HTML5 canvas tag.
         </canvas>
         </div>
 		<div>
 		<form action="index2.html">
-            Budget: $100<br>
-            HVAC: <input type="text" name="hvac" id="hvac" value="72" onchange="redraw();"><br>
-            Water Heater: <input type="text" name="wh" id="wh" value="160" onchange="redraw();"><br>
-            Refrigerator: <input type="text" name="fridge" id="fridge" value="5" onchange="redraw();"><br>
-            Lights: <input type="text" name="lights" id="lights" value="4" onchange="redraw();"><br><br>
-			Total: <input type="text" name="Total" id="Total" value="4"><br>
-            <input type="submit" value="Next Day">
+			<table>
+			<tr>
+				<th> Home Appliances </th><th> Temp Set Point (F) </th><th> Hours </th>
+			</tr>
+			<tr>
+				<td>HVAC</td><td><input type="text" name="hvac" id="hvac" value="72" onchange="redraw();"></td>
+				<td><input type="text" name="hvac_hour" id="hvac_hour" value="1" onchange="redraw();" align="center"></td><br>
+			</tr>
+			<tr>
+				<td>Water Heater</td><td><input type="text" name="wh" id="wh" value="160" onchange="redraw();"><br></td>
+				<td><input type="text" name="wh_hour" id="wh_hour" value="2" onchange="redraw();"></td><br>
+			</tr>			
+		</table>
+		<input type="submit" value="Next Day">
 		</form>
         </div>
     </body>
