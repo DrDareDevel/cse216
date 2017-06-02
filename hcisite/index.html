@@ -17,11 +17,13 @@
 		<style>
 	body {
     background-image: url("Home.png");
+	background-size: 1366px 768px;
 	}
 	table, th, td {
     border: 1px solid black;
 	text-align: center;
 	}
+	input {display: inline-block;}
 		</style>
     </head>
     <body onload="draw(0);">
@@ -37,12 +39,17 @@
         <div>
 		<table>
 		<tr>
-		  <th>Budget ($): <input type="text" name="Budget" id="Budget" value="100" onchange="redraw();"></th></tr>
+		<th>Budget ($)</th><th><input type="text" name="Budget" id="Budget" value="100" style="text-align:center;" onchange="redraw();"></th>
+		</tr>
 		  <tr>
-		  <th>
-		  Month: <input type="text" name="month" id="month" value="Summer" onchange="redraw();"></th></tr>
-		  <tr><th>
-		  Price ($): <input type="text" name="Price" id="Price" value="0.17 KW/h" onchange="redraw();"></th></tr>
+		  <th> Month</th><th> <input type="text" name="month" id="month" value="Summer" style="text-align:center;" onchange="redraw();"></th>
+		  </tr>
+		  <tr>
+		  <th> Day </th><th><input type="text" name="day" id="day" value="1" maxlength="20" style="text-align:center;" onchange="redraw();"></th>
+		  </tr>
+		  <tr>
+		  <th> Price ($)</th><th> <input type="text" name="Price" id="Price" value="0.1635 KW/h" style="text-align:center;" onchange="redraw();"></th>
+		  </tr>
 		  </table>
         <canvas class="canvas" id="myCanvas" width="350" height="350">
             Your browser does not support the HTML5 canvas tag.
@@ -55,12 +62,12 @@
 				<th> Home Appliances </th><th> Temp Set Point (F) </th><th> Hours </th>
 			</tr>
 			<tr>
-				<td>HVAC</td><td><input type="text" name="hvac" id="hvac" value="72" onchange="redraw();"></td>
-				<td><input type="text" name="hvac_hour" id="hvac_hour" value="1" onchange="redraw();" align="center"></td><br>
+				<td>HVAC</td><td><input type="text" name="hvac" id="hvac" value="72" style="text-align:center;" onchange="redraw();"></td>
+				<td><input type="text" name="hvac_hour" id="hvac_hour" value="1" style="text-align:center;" onchange="redraw();"></td><br>
 			</tr>
 			<tr>
-				<td>Water Heater</td><td><input type="text" name="wh" id="wh" value="160" onchange="redraw();"><br></td>
-				<td><input type="text" name="wh_hour" id="wh_hour" value="2" onchange="redraw();"></td><br>
+				<td>Water Heater</td><td><input type="text" name="wh" id="wh" value="160" style="text-align:center;" onchange="redraw();"><br></td>
+				<td><input type="text" name="wh_hour" id="wh_hour" value="2" style="text-align:center;" onchange="redraw();"></td><br>
 			</tr>			
 		</table>
 		<input type="submit" value="Next Day">
