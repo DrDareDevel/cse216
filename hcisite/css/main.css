@@ -17,9 +17,9 @@ html {
 }
 
 body {
-    background-color: lightblue;
+    background-image: url("Home.png");
+    background-repeat: repeat;
 }
-
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
