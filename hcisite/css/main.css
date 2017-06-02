@@ -16,10 +16,6 @@ html {
     line-height: 1.4;
 }
 
-body {
-    background-image: url("Home.png");
-    background-repeat: repeat;
-}
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301

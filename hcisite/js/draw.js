@@ -4,7 +4,10 @@
 
 function redraw()
 {
-    draw(document.getElementById("hvac").value);
+    var Total = 0;
+	Total = Total + (document.getElementById("hvac").value)*10;
+	document.getElementById("Total").value = Total;
+	draw(Total);
 }
 
 function draw(speed)
