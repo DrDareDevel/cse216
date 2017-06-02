@@ -4,7 +4,7 @@
 
 function redraw()
 {
-    draw(document.getElementById("myList").value);
+    draw(document.getElementById("hvac").value);
 }
 
 function draw(speed)
@@ -31,7 +31,7 @@ function draw(speed)
     context.beginPath();
     context.strokeStyle = '#ffff00';
     context.translate(centerX,centerY);
-    var increment = 5;
+    var increment = 3;
     context.font="15px Helvetica";
     for (var i=-18; i<=18; i++)
     {
@@ -65,12 +65,19 @@ function draw(speed)
         context.closePath();
     }
     var numOfSegments = speed/increment;
+    var numOfSegmentsForLimit = 100.0/increment;
     numOfSegments = numOfSegments -18;
+    numOfSegmentsForLimit = numOfSegmentsForLimit -18
     angle = Math.PI/30*numOfSegments;
     sineAngle = Math.sin(angle);
     cosAngle = -Math.cos(angle);
     var pointX = sineAngle *(3/4*radius);
     var pointY = cosAngle *(3/4*radius);
+    angleLimit = Math.PI/30*numOfSegmentsForLimit;
+    sineAngleLimit = Math.sin(angleLimit);
+    cosAngleLimit = -Math.cos(angleLimit);
+    var pointXLimit = sineAngleLimit *radius;
+    var pointYLimit = cosAngleLimit *radius;
 
     context.beginPath();
     context.strokeStyle = '#000000';
@@ -82,6 +89,16 @@ function draw(speed)
     context.lineWidth=6;
     context.moveTo(0,0);
     context.lineTo(pointX,pointY);
+    context.stroke();
+    context.closePath();
+    // context.restore();
+    // context.translate(-centerX,-centerY);
+
+    context.beginPath();
+    context.strokeStyle = '#FF0000';
+    context.lineWidth=6;
+    context.moveTo(0,0);
+    context.lineTo(pointXLimit,pointYLimit);
     context.stroke();
     context.closePath();
     context.restore();

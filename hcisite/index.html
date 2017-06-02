@@ -26,18 +26,17 @@
         <script src="js/main.js"></script>
 
         <div>
-            Change the speed in the dropdown to see the dial position change
-            <select id="myList" onchange="redraw();">
-                <option value="120">Speed = 120</option>
-                <option value="30">Speed = 30</option>
-                <option value="50">Speed = 50</option>
-                <option value="60">Speed = 60</option>
-                <option value="140">Speed = 140</option>
-                <option value="160">Speed = 160</option>
-            </select>
+            Budget: $100<br>
+            HVAC: <input type="text" name="hvac" id="hvac" value="72" onchange="redraw();"><br>
+            Water Heater: <input type="text" name="wh" id="wh" value="160" onchange="redraw();"><br>
+            Refrigerator: <input type="text" name="fridge" id="fridge" value="5" onchange="redraw();"><br>
+            Lights: <input type="text" name="lights" id="lights" value="4" onchange="redraw();"><br>
+            <input type="submit" value="Next Day">
         </div>
+        <div>
         <canvas class="canvas" id="myCanvas" width="600" height="600">
             Your browser does not support the HTML5 canvas tag.
         </canvas>
+        </div>
     </body>
 </html>
