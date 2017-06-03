@@ -29,16 +29,25 @@
                 padding: 0;
                 background-color: pink;
             }
-	table, th, td {
+	table {
     border: 1px solid black;
 	text-align: center;
 	background-color: #33ccff;
 	margin: 0;
 	margin-left: 10px;
 	}
+	
+	th, td {
+    border: 1px solid black;
+	text-align: center;
+	background-color: #33ccff;
+	margin: 0;
+	}
 	input {
-	margin-left: 10px;
 	display: inline-block;
+	}
+	lastIn{
+	margin-left: 10px;
 	}
 		</style>
     </head>
@@ -112,7 +121,7 @@
 				<td><input type="text" name="stove" id="stove" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
 			</tr>			
 		</table>
-		<input type="submit" value="Next Day" margin= >
+		<lastIn><input type="submit" value="Next Day" margin= ></lastIn>
 		</form>
         </div>
     </body>
