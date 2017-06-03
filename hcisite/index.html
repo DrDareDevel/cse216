@@ -34,8 +34,12 @@
 	text-align: center;
 	background-color: #33ccff;
 	margin: 0;
+	margin-left: 10px;
 	}
-	input {display: inline-block;}
+	input {
+	margin-left: 10px;
+	display: inline-block;
+	}
 		</style>
     </head>
     <body onload="draw(0);">
@@ -47,10 +51,9 @@
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-
+		 <strong><font size="16"><center><font color=" #59ea54 ">CSE 216 - Smart Home Dashboard </font></center></font></strong> 
         <div style="border-spacing: 0px;">
-		<br>
-		<table style="border-spacing: 0px;">
+		<table style="border-spacing: 0px;" >
 		<tr>
 		<th>Budget ($)</th><th><input type="text" name="Budget" id="Budget" value="100" style="text-align:center;" onchange="redraw();"></th>
 		</tr>
@@ -109,7 +112,7 @@
 				<td><input type="text" name="stove" id="stove" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
 			</tr>			
 		</table>
-		<input type="submit" value="Next Day">
+		<input type="submit" value="Next Day" margin= >
 		</form>
         </div>
     </body>
