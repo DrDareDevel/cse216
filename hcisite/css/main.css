@@ -13,7 +13,7 @@
 html {
     color: #222;
     font-size: 1em;
-    line-height: 1.4;
+    /*line-height: 1.4; Francesco */
 }
 
 /*
@@ -39,11 +39,11 @@ html {
  */
 
 hr {
-    display: block;
+    display: inline-block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
+    /*border-top: 1px solid #ccc;
+    margin: 1em 0; Francesco*/ 
     padding: 0;
 }
 
@@ -119,6 +119,7 @@ textarea {
  * Hide visually and from screen readers
  */
 
+ 
 .hidden {
     display: none !important;
 }
@@ -155,7 +156,7 @@ textarea {
     width: auto;
 }
 
-/*
+
  * Hide visually and from screen readers, but maintain layout
  */
 
