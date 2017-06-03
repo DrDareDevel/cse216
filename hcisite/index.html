@@ -20,7 +20,7 @@
 	}
 		</style>
     </head>
-    <body onload="draw(0);">
+    <body onload="redraw();">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -36,9 +36,9 @@
         </canvas>
         </div>
 		<div>
-		<form action="index2.html">
+		<form action="index.html">
             Budget: $100<br>
-            HVAC: <input type="text" name="hvac" id="hvac" value="72" onchange="redraw();"><br>
+            HVAC: <input type="text" name="hvac" id="hvac" value="76" onchange="redraw();"><br>
             Water Heater: <input type="text" name="wh" id="wh" value="160" onchange="redraw();"><br>
             Refrigerator: <input type="text" name="fridge" id="fridge" value="5" onchange="redraw();"><br>
             Lights: <input type="text" name="lights" id="lights" value="4" onchange="redraw();"><br><br>
