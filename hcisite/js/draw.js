@@ -15,7 +15,7 @@ function getQueryVariable(variable)
 
 function necxtweek()
 {
-    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value) + Math.random()*20 - 10;
+    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value) + Math.random()*10 - 5;
 }
 
 function loadup()
@@ -101,6 +101,14 @@ function loadup()
     document.getElementById("wash_n").value = wash_n;
 
     var cost = parseFloat(document.getElementById("price").value)/1000.0;
+
+    var budget = parseFloat(document.getElementById("budget").value);
+    var hasBudget = getQueryVariable("budget");
+    if (hasBudget != false) {
+        budget = parseFloat(hasBudget);
+    }
+    document.getElementById("budget").value = budget;
+
     var outside_temp = 86.0;
     var newTotal = 0.0;
     newTotal = newTotal+1500*stove_h*cost;
@@ -113,34 +121,25 @@ function loadup()
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
-    draw(newTotal);
+    draw(newTotal,budget);
 }
 
 function redraw()
 {
     var total = parseFloat(document.getElementById("total").value);
-    var day = document.getElementById("day").value;
-
-
     var stove_h = parseFloat(document.getElementById("stove_h").value);
-
     var micro_h = parseFloat(document.getElementById("micro_h").value);
-
     var tv_h = parseFloat(document.getElementById("tv_h").value);
-
     var hvac_h = parseFloat(document.getElementById("hvac_h").value);
-
     var hvac_set = parseFloat(document.getElementById("hvac_set").value);
-
     var wh_h = parseFloat(document.getElementById("wh_h").value);
-
     var wh_set = parseFloat(document.getElementById("wh_set").value);
     var bath_n = parseFloat(document.getElementById("bath_n").value);
     var wash_n = parseFloat(document.getElementById("wash_n").value);
-
-
     var cost = parseFloat(document.getElementById("price").value)/1000.0;
+    var budget = parseFloat(document.getElementById("budget").value);
     var outside_temp = 86.0;
+
     var newTotal = 0.0;
     newTotal = newTotal+1500.0*stove_h*cost;
     newTotal = newTotal+1500.0*micro_h*cost;
@@ -152,10 +151,10 @@ function redraw()
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
-    draw(newTotal);
+    draw(newTotal,budget);
 }
 
-function draw(speed)
+function draw(speed,budget)
 {
     var canvas = document.getElementById("myCanvas");
     var context = canvas.getContext("2d");
@@ -179,7 +178,7 @@ function draw(speed)
     context.beginPath();
     context.strokeStyle = '#ffff00';
     context.translate(centerX,centerY);
-    var increment = 3;
+    var increment = 5;
     context.font="15px Helvetica";
     for (var i=-18; i<=18; i++)
     {
@@ -213,7 +212,7 @@ function draw(speed)
         context.closePath();
     }
     var numOfSegments = speed/increment;
-    var numOfSegmentsForLimit = 100.0/increment;
+    var numOfSegmentsForLimit = budget/increment;
     numOfSegments = numOfSegments -18;
     numOfSegmentsForLimit = numOfSegmentsForLimit -18
     angle = Math.PI/30*numOfSegments;
