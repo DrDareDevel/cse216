@@ -20,8 +20,12 @@ function redraw()
     if (hasTotal != false) {
         Total = hasTotal;
     }
-	Total = Total + (document.getElementById("hvac").value)*10;
-	document.getElementById("Total").value = Total;
+    var day = 1;
+    var hasDay = getQueryVariable("day");
+    if (hasDay != false){
+        day = hasDay;
+    }
+	document.getElementById("day").value = day;
 	draw(Total);
 }
 
