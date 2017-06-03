@@ -52,7 +52,7 @@
         }
     </style>
 </head>
-<body onload="redraw();">
+<body onload="loadup();">
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -71,17 +71,20 @@
             <th> Month</th><th> <input type="text" name="month" id="month" value="Summer" style="text-align:center;" onchange="redraw();"></th>
         </tr>
         <tr>
-            <th> Day </th><th><input type="text" name="day" id="day" value="1" maxlength="20" style="text-align:center;" onchange="redraw();"></th>
+            <th> Day </th><th><input type="text" name="day" id="day" value="7" maxlength="20" style="text-align:center;" onchange="redraw();"></th>
         </tr>
         <tr>
-            <th> Price ($)</th><th> <input type="text" name="Price" id="Price" value="0.1635 KW/h" style="text-align:center;" onchange="redraw();"></th>
+            <th> Price ($)</th><th> <input type="text" name="price" id="price" value="0.1635 KW/h" style="text-align:center;" onchange="redraw();"></th>
         </tr>
     </table>
     <canvas class="canvas" id="myCanvas" width="350" height="350">
         Your browser does not support the HTML5 canvas tag.
     </canvas>
 
-    <form action="index2.html">
+    <form action="index.html">
+        <input type="text" name="total" id="total" value="0">
+        <input type="hidden" name="nextDay" id="nextDay" value="8">
+        <input type="text" name="newTotal" id="newTotal" value="0">
 
         <table>
             <tr>
@@ -126,7 +129,7 @@
             </tr>
         </table>
         <br>
-        <lastIn><input type="submit" value="Next Week" margin= ></lastIn>
+        <lastIn><input type="submit" value="Next Week" onclick="necxtweek();" margin= ></lastIn>
     </form>
 </div>
 </body>

@@ -13,20 +13,146 @@ function getQueryVariable(variable)
     return(false);
 }
 
+function necxtweek()
+{
+    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value) + Math.random()*20 - 10;
+}
+
+function loadup()
+{
+    var total = parseFloat(document.getElementById("total").value);
+    var day = document.getElementById("day").value;
+    var stove_h = parseFloat(document.getElementById("stove_h").value);
+    var micro_h = parseFloat(document.getElementById("micro_h").value);
+    var tv_h = parseFloat(document.getElementById("tv_h").value);
+    var hvac_h = parseFloat(document.getElementById("hvac_h").value);
+    var hvac_set = parseFloat(document.getElementById("hvac_set").value);
+    var wh_h = parseFloat(document.getElementById("wh_h").value);
+    var wh_set = parseFloat(document.getElementById("wh_set").value);
+    var bath_n = parseFloat(document.getElementById("bath_n").value);
+    var wash_n = parseFloat(document.getElementById("wash_n").value);
+
+    var hasTotal = getQueryVariable("total");
+    if (hasTotal != false) {
+        total = parseFloat(hasTotal);
+    }
+    document.getElementById("total").value = total;
+
+    var hasDay = getQueryVariable("nextDay");
+    if (hasDay != false){
+        day = parseInt(hasDay);
+    }
+    document.getElementById("day").value = day;
+    document.getElementById("nextDay").value = parseInt(day)+7;
+
+
+    var hasStove_h = getQueryVariable("stove_h");
+    if (hasStove_h != false) {
+        stove_h = parseInt(hasStove_h);
+    }
+    document.getElementById("stove_h").value = stove_h;
+
+    var hasHicro_h = getQueryVariable("micro_h");
+    if (hasHicro_h != false) {
+        micro_h = parseInt(hasHicro_h);
+    }
+    document.getElementById("micro_h").value = micro_h;
+
+    var hasTv_h = getQueryVariable("tv_h");
+    if (hasTv_h != false) {
+        tv_h = parseInt(hasTv_h);
+    }
+    document.getElementById("tv_h").value = tv_h;
+
+    var hasHvac_h = getQueryVariable("hvac_h");
+    if (hasHvac_h != false) {
+        hvac_h = parseInt(hasHvac_h);
+    }
+    document.getElementById("hvac_h").value = hvac_h;
+
+    var hasHvac_set = getQueryVariable("hvac_set");
+    if (hasHvac_set != false) {
+        hvac_set = parseInt(hasHvac_set);
+    }
+    document.getElementById("hvac_set").value = hvac_set;
+
+    var hasWh_h = getQueryVariable("wh_h");
+    if (hasWh_h != false) {
+        wh_h = parseInt(hasWh_h);
+    }
+    document.getElementById("wh_h").value = wh_h;
+
+    var hasWh_set = getQueryVariable("wh_set");
+    if (hasWh_set != false) {
+        wh_set = parseInt(hasWh_set);
+    }
+    document.getElementById("wh_set").value = wh_set;
+
+    var hasBath_n = getQueryVariable("bath_n");
+    if (hasBath_n != false) {
+        bath_n = parseInt(hasBath_n);
+    }
+    document.getElementById("bath_n").value = bath_n;
+
+    var hasWash_n = getQueryVariable("wash_n");
+    if (hasWash_n != false) {
+        wash_n = parseInt(hasWash_n);
+    }
+    document.getElementById("wash_n").value = wash_n;
+
+    var cost = parseFloat(document.getElementById("price").value)/1000.0;
+    var outside_temp = 86.0;
+    var newTotal = 0.0;
+    newTotal = newTotal+1500*stove_h*cost;
+    newTotal = newTotal+1500*micro_h*cost;
+    newTotal = newTotal+234*tv_h*cost;
+    newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/20.0)*1000.0*cost;
+    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
+    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
+    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
+    newTotal = newTotal*7+total;
+
+    document.getElementById("newTotal").value = newTotal;
+    draw(newTotal);
+}
+
 function redraw()
 {
-    var Total = 0;
-    var hasTotal = getQueryVariable("Total");
-    if (hasTotal != false) {
-        Total = hasTotal;
-    }
-    var day = 1;
-    var hasDay = getQueryVariable("day");
-    if (hasDay != false){
-        day = hasDay;
-    }
-	document.getElementById("day").value = day;
-	draw(Total);
+    var total = parseFloat(document.getElementById("total").value);
+    var day = document.getElementById("day").value;
+
+
+    var stove_h = parseFloat(document.getElementById("stove_h").value);
+
+    var micro_h = parseFloat(document.getElementById("micro_h").value);
+
+    var tv_h = parseFloat(document.getElementById("tv_h").value);
+
+    var hvac_h = parseFloat(document.getElementById("hvac_h").value);
+
+    var hvac_set = parseFloat(document.getElementById("hvac_set").value);
+
+    var wh_h = parseFloat(document.getElementById("wh_h").value);
+
+    var wh_set = parseFloat(document.getElementById("wh_set").value);
+    var bath_n = parseFloat(document.getElementById("bath_n").value);
+    var wash_n = parseFloat(document.getElementById("wash_n").value);
+
+
+    var cost = parseFloat(document.getElementById("price").value)/1000.0;
+    var outside_temp = 86.0;
+    var newTotal = 0.0;
+    newTotal = newTotal+1500.0*stove_h*cost;
+    newTotal = newTotal+1500.0*micro_h*cost;
+    newTotal = newTotal+234.0*tv_h*cost;
+    newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/20.0)*1000.0*cost;
+    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
+    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
+    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
+    newTotal = newTotal*7+total;
+
+    document.getElementById("newTotal").value = newTotal;
+    draw(newTotal);
 }
 
 function draw(speed)
