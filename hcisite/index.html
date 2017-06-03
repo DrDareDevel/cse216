@@ -43,7 +43,6 @@
     border: 1px solid black;
 	text-align: center;
 	background-color: #33ccff;
-	margin: 0;
 	}
 	input {
 	display: inline-block;
@@ -83,6 +82,7 @@
         </canvas>
 
 		<form action="index2.html">
+		
 		<table>
 			<tr>
 				<th> Home Appliances </th><th> Hours per day (F) </th><th> Temp Set Point (F)</th><th> Block</th>
@@ -109,7 +109,9 @@
 				<td><input type="text" name="wh" id="wh" value="160" size="17" style="text-align:center;" onchange="redraw();"></td>
 				<td><input type="text" name="stove" id="stove" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
 			</tr>			
-		</table><br>
+		</table>
+		
+		<br>
 			<table>
 			<tr>
 				<th> Home Appliances </th><th> Numbers per Day </th><th> Block</th>
@@ -123,6 +125,7 @@
 				<td><input type="text" name="stove" id="stove" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
 			</tr>			
 		</table>
+		<br>
 		<lastIn><input type="submit" value="Next Week" margin= ></lastIn>
 		</form>
         </div>
