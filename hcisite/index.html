@@ -78,16 +78,10 @@
 <div style="border-spacing: 0px;">
     <table style="border-spacing: 0px;" >
         <tr>
-            <th>Budget ($)</th><th><input type="text" name="budget" id="budget" value="100" style="text-align:center;" onchange="redraw();"></th>
-        </tr>
-        <tr>
-            <th> Month</th><th> <input type="text" name="month" id="month" value="Summer" style="text-align:center;" onchange="redraw();"></th>
+            <th> Season</th><th> <input type="text" name="season" id="season" value="Summer" style="text-align:center;" onchange="redraw();"></th>
         </tr>
         <tr>
             <th> Day </th><th><input type="text" name="day" id="day" value="7" maxlength="20" style="text-align:center;" onchange="redraw();"></th>
-        </tr>
-        <tr>
-            <th> Price ($)</th><th> <input type="text" name="price" id="price" value="0.1635 KW/h" style="text-align:center;" onchange="redraw();"></th>
         </tr>
     </table>
     <canvas class="canvas" id="myCanvas" width="350" height="350">
@@ -98,10 +92,19 @@
         <input type="text" name="total" id="total" value="0">
         <input type="hidden" name="nextDay" id="nextDay" value="8">
         <input type="text" name="newTotal" id="newTotal" value="0">
+		
+		<table>
+        <tr>
+            <th>Budget ($)</th><th><input type="text" name="budget" id="budget" value="100" style="text-align:center;" onchange="redraw();"></th>
+        </tr>
+        <tr>
+            <th> Price ($)</th><th> <input type="text" name="price" id="price" value="0.1635 KW/h" style="text-align:center;" onchange="redraw();"></th>
+        </tr>
+		</table><br>
 
         <table>
             <tr>
-                <th> Home Appliances </th><th> Hours per day (F) </th><th> Temp Set Point (F)</th><th> Block</th>
+                <th> Home Appliances </th><th> Hours per day</th><th> Temp Set Point (F)</th><th> Block</th>
             </tr>
             <tr>
                 <td>Stove Top</td><td><input type="text" name="stove_h" id="stove_h" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>

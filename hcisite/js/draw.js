@@ -22,6 +22,7 @@ function loadup()
 {
     var total = parseFloat(document.getElementById("total").value);
     var day = document.getElementById("day").value;
+	var season = document.getElementById("season").value;
     var stove_h = parseFloat(document.getElementById("stove_h").value);
     var micro_h = parseFloat(document.getElementById("micro_h").value);
     var tv_h = parseFloat(document.getElementById("tv_h").value);
@@ -31,6 +32,7 @@ function loadup()
     var wh_set = parseFloat(document.getElementById("wh_set").value);
     var bath_n = parseFloat(document.getElementById("bath_n").value);
     var wash_n = parseFloat(document.getElementById("wash_n").value);
+	var estimate = 0.0;
 
     var hasTotal = getQueryVariable("total");
     if (hasTotal != false) {
@@ -44,7 +46,6 @@ function loadup()
     }
     document.getElementById("day").value = day;
     document.getElementById("nextDay").value = parseInt(day)+7;
-
 
     var hasStove_h = getQueryVariable("stove_h");
     if (hasStove_h != false) {
@@ -114,14 +115,20 @@ function loadup()
     newTotal = newTotal+1500*stove_h*cost;
     newTotal = newTotal+1500*micro_h*cost;
     newTotal = newTotal+234*tv_h*cost;
-    newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/20.0)*1000.0*cost;
-    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
+	if(season === "Summer"){
+		newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/20.0)*1000.0*cost;
+    }
+	else {
+		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32.0)/1.8)-21.1))/20)*1000.0*cost;
+	}
+	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
+	estimate = newTotal*(35-day)+total;
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
-    draw(newTotal,budget);
+    draw(estimate,budget);
 }
 
 function redraw()
@@ -139,19 +146,28 @@ function redraw()
     var cost = parseFloat(document.getElementById("price").value)/1000.0;
     var budget = parseFloat(document.getElementById("budget").value);
     var outside_temp = 86.0;
+	var season = document.getElementById("season").value;
+	var day = document.getElementById("day").value;
+	var estimate;
 
     var newTotal = 0.0;
     newTotal = newTotal+1500.0*stove_h*cost;
     newTotal = newTotal+1500.0*micro_h*cost;
     newTotal = newTotal+234.0*tv_h*cost;
-    newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/20.0)*1000.0*cost;
-    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
+    if(season === "Summer"){
+		newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/20.0)*1000.0*cost;
+    }
+	else {
+		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32)/1.8)-21.1))/20)*1000*cost;
+	}
+	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
+	estimate = newTotal*(35-day)+total;
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
-    draw(newTotal,budget);
+    draw(estimate,budget);
 }
 
 function draw(speed,budget)
