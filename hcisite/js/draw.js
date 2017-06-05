@@ -38,7 +38,7 @@ function loadup()
     if (hasTotal != false) {
         total = parseFloat(hasTotal);
     }
-    document.getElementById("total").value = total;
+    document.getElementById("total").value = total.toFixed(2);
 
     var hasDay = getQueryVariable("nextDay");
     if (hasDay != false){
@@ -254,8 +254,6 @@ function draw(speed,budget)
     context.lineTo(pointX,pointY);
     context.stroke();
     context.closePath();
-    // context.restore();
-    // context.translate(-centerX,-centerY);
 
     context.beginPath();
     context.strokeStyle = '#FF0000';

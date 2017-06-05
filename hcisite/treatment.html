@@ -1,0 +1,152 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CSE 216 Dashboard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="js/draw.js"></script>
+
+    <script type="text/javascript">
+
+        function stopRKey(evt) {
+            var evt = (evt) ? evt : ((event) ? event : null);
+            var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+            if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+        }
+
+        document.onkeypress = stopRKey;
+
+    </script>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-image: url("Home.png");
+            background-repeat: no-repeat;
+            background-color: black;
+        }
+        #container {
+            width: inherit;
+            height: inherit;
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+        }
+        table {
+            border: 1px solid black;
+            text-align: center;
+            background-color: #33ccff;
+            margin: 0;
+            margin-left: 10px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            background-color: #33ccff;
+        }
+        input {
+            display: inline-block;
+        }
+        lastIn{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body onload="loadup();">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+<strong><font size="16"><center><font color=" #59ea54 ">CSE 216 - Smart Home Dashboard </font></center></font></strong>
+<div style="border-spacing: 0px;">
+    <table style="border-spacing: 0px;" >
+        <tr>
+            <th> Season</th><th> <input type="text" name="season" id="season" value="Summer" style="text-align:center;" onchange="redraw();"></th>
+        </tr>
+        <tr>
+            <th> Day </th><th><input type="text" name="day" id="day" value="7" maxlength="20" style="text-align:center;" onchange="redraw();"></th>
+        </tr>
+    </table>
+    <canvas class="canvas" id="myCanvas" width="350" height="350">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+
+    <form action="treatment.html">
+        <input type="hidden" name="nextDay" id="nextDay" value="8">
+        <input type="hidden" name="newTotal" id="newTotal" value="0">
+
+		<table>
+        <tr>
+            <th>Budget ($)</th><th><input type="text" name="budget" id="budget" value="100" style="text-align:center;" onchange="redraw();"></th>
+        </tr>
+        <tr>
+            <th> Price ($)</th><th> <input type="text" name="price" id="price" value="0.1635 KW/h" style="text-align:center;" onchange="redraw();"></th>
+        </tr>
+            <tr><th>Balance ($)</th><th><input type="text" name="total" id="total" value="0" style="text-align:center;"></th></tr>
+		</table><br>
+
+        <table>
+            <tr>
+                <th> Home Appliances </th><th> Hours per day</th><th> Temp Set Point (F)</th><th> Block</th>
+            </tr>
+            <tr>
+                <td>Stove Top</td><td><input type="text" name="stove_h" id="stove_h" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td></td><td><input type="text" name="stove_b" id="stove_b" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
+            </tr>
+            <tr>
+                <td>Microwave</td><td><input type="text" name="micro_h" id="micro_h" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td></td><td><input type="text" name="micro_b" id="micro_b" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
+            </tr>
+            <tr>
+                <td>TV LCD</td><td><input type="text" name="tv_h" id="tv_h" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td></td><td><input type="text" name="tv_b" id="tv_b" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
+            </tr>
+            <tr>
+                <td>HVAC</td><td><input type="text" name="hvac_h" id="hvac_h" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td><input type="text" name="hvac_set" id="hvac_set" value="72" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td><input type="text" name="hvac_b" id="hvac_b" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
+            </tr>
+            <tr>
+                <td>Water Heater</td><td><input type="text" name="wh_h" id="wh_h" value="2" size="17" style="text-align:center;" onchange="redraw();"><br></td>
+                <td><input type="text" name="wh_set" id="wh_set" value="160" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td><input type="text" name="wh_b" id="wh_b" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
+            </tr>
+        </table>
+
+        <br>
+        <table>
+            <tr>
+                <th> Home Appliances </th><th> Numbers per Day </th><th> Block</th>
+            </tr>
+            <tr>
+                <td>Baths</td><td><input type="text" name="bath_n" id="bath_n" value="2" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td><input type="text" name="bath_b" id="bath_b" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
+            </tr>
+            <tr>
+                <td>Dish Washer</td><td><input type="text" name="wash_n" id="wash_n" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td><input type="text" name="wash_b" id="wash_b" value="1" size="5" style="text-align:center;" onchange="redraw();"></td>
+            </tr>
+        </table>
+        <br>
+        <lastIn><input type="submit" value="Next Week" onclick="necxtweek();" margin= ></lastIn>
+    </form>
+</div>
+</body>
+</html>
