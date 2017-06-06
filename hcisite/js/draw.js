@@ -32,7 +32,7 @@ function loadup()
     var wh_set = parseFloat(document.getElementById("wh_set").value);
     var bath_n = parseFloat(document.getElementById("bath_n").value);
     var wash_n = parseFloat(document.getElementById("wash_n").value);
-	var estimate = 0.0;
+	var estimate;
 
     var hasTotal = getQueryVariable("total");
     if (hasTotal != false) {
