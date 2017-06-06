@@ -124,7 +124,7 @@ function loadup()
 	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
-	estimate = newTotal*(35-day)+total;
+	estimate = newTotal*(29-day)+total;
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
@@ -163,7 +163,7 @@ function redraw()
 	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
-	estimate = newTotal*(35-day)+total;
+	estimate = newTotal*(29-day)+total;
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
