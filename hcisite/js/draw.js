@@ -14,8 +14,13 @@ function getQueryVariable(variable) {
     return (false);
 }
 
-function necxtweek() {
-    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value) + Math.random() * 4 - 2;
+function necxtweek(x) {
+	if(x){
+		document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value);
+	}
+	else{
+		document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value) + Math.random() * 4 - 2;
+	}
 }
 
 function loadup() {
