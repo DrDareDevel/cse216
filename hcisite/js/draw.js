@@ -15,7 +15,7 @@ function getQueryVariable(variable)
 
 function necxtweek()
 {
-    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value) + Math.random()*10 - 5;
+    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value)+ Math.random()*4 - 2;
 }
 
 function loadup()
@@ -28,7 +28,6 @@ function loadup()
     var tv_h = parseFloat(document.getElementById("tv_h").value);
     var hvac_h = parseFloat(document.getElementById("hvac_h").value);
     var hvac_set = parseFloat(document.getElementById("hvac_set").value);
-    var wh_h = parseFloat(document.getElementById("wh_h").value);
     var wh_set = parseFloat(document.getElementById("wh_set").value);
     var bath_n = parseFloat(document.getElementById("bath_n").value);
     var wash_n = parseFloat(document.getElementById("wash_n").value);
@@ -39,6 +38,12 @@ function loadup()
         total = parseFloat(hasTotal);
     }
     document.getElementById("total").value = total.toFixed(2);
+	
+	var hasSeason = getQueryVariable("season");
+    if (hasSeason != false) {
+        season = hasSeason;
+    }
+    document.getElementById("season").value = season;
 
     var hasDay = getQueryVariable("nextDay");
     if (hasDay != false){
@@ -49,25 +54,25 @@ function loadup()
 
     var hasStove_h = getQueryVariable("stove_h");
     if (hasStove_h != false) {
-        stove_h = parseInt(hasStove_h);
+        stove_h = parseFloat(hasStove_h);
     }
     document.getElementById("stove_h").value = stove_h;
 
     var hasHicro_h = getQueryVariable("micro_h");
     if (hasHicro_h != false) {
-        micro_h = parseInt(hasHicro_h);
+        micro_h = parseFloat(hasHicro_h);
     }
     document.getElementById("micro_h").value = micro_h;
 
     var hasTv_h = getQueryVariable("tv_h");
     if (hasTv_h != false) {
-        tv_h = parseInt(hasTv_h);
+        tv_h = parseFloat(hasTv_h);
     }
     document.getElementById("tv_h").value = tv_h;
 
     var hasHvac_h = getQueryVariable("hvac_h");
     if (hasHvac_h != false) {
-        hvac_h = parseInt(hasHvac_h);
+        hvac_h = parseFloat(hasHvac_h);
     }
     document.getElementById("hvac_h").value = hvac_h;
 
@@ -77,11 +82,6 @@ function loadup()
     }
     document.getElementById("hvac_set").value = hvac_set;
 
-    var hasWh_h = getQueryVariable("wh_h");
-    if (hasWh_h != false) {
-        wh_h = parseInt(hasWh_h);
-    }
-    document.getElementById("wh_h").value = wh_h;
 
     var hasWh_set = getQueryVariable("wh_set");
     if (hasWh_set != false) {
@@ -91,13 +91,13 @@ function loadup()
 
     var hasBath_n = getQueryVariable("bath_n");
     if (hasBath_n != false) {
-        bath_n = parseInt(hasBath_n);
+        bath_n = parseFloat(hasBath_n);
     }
     document.getElementById("bath_n").value = bath_n;
 
     var hasWash_n = getQueryVariable("wash_n");
     if (hasWash_n != false) {
-        wash_n = parseInt(hasWash_n);
+        wash_n = parseFloat(hasWash_n);
     }
     document.getElementById("wash_n").value = wash_n;
 
@@ -128,6 +128,7 @@ function loadup()
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
+	document.getElementById("estimate").value = estimate.toFixed(2);
     draw(estimate,budget);
 }
 
@@ -139,7 +140,6 @@ function redraw()
     var tv_h = parseFloat(document.getElementById("tv_h").value);
     var hvac_h = parseFloat(document.getElementById("hvac_h").value);
     var hvac_set = parseFloat(document.getElementById("hvac_set").value);
-    var wh_h = parseFloat(document.getElementById("wh_h").value);
     var wh_set = parseFloat(document.getElementById("wh_set").value);
     var bath_n = parseFloat(document.getElementById("bath_n").value);
     var wash_n = parseFloat(document.getElementById("wash_n").value);
@@ -167,6 +167,7 @@ function redraw()
     newTotal = newTotal*7+total;
 
     document.getElementById("newTotal").value = newTotal;
+	document.getElementById("estimate").value = estimate.toFixed(2);
     draw(estimate,budget);
 }
 
@@ -194,7 +195,7 @@ function draw(speed,budget)
     context.beginPath();
     context.strokeStyle = '#ffff00';
     context.translate(centerX,centerY);
-    var increment = 5;
+    var increment = 3;
     context.font="15px Helvetica";
     for (var i=-18; i<=18; i++)
     {
