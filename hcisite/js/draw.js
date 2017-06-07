@@ -192,14 +192,14 @@ function draw(speed, budget) {
     context.beginPath();
     context.strokeStyle = '#ffff00';
     context.translate(centerX, centerY);
-    var increment = 3;
+    var increment = 1;
     context.font = "15px Helvetica";
-    for (var i = -18; i <= 18; i++) {
-        var angle = Math.PI / 30 * i;
+    for (var i = -50; i <= 50; i++) {
+        var angle = Math.PI / 60 * i;
         var sineAngle = Math.sin(angle);
         var cosAngle = -Math.cos(angle);
 
-        if (i % 5 == 0) {
+        if (i % 10 == 0) {
             context.lineWidth = 8;
             var iPointX = sineAngle * (radius - radius / 4);
             var iPointY = cosAngle * (radius - radius / 4);
@@ -208,7 +208,7 @@ function draw(speed, budget) {
 
             var wPointX = sineAngle * (radius - radius / 2.5);
             var wPointY = cosAngle * (radius - radius / 2.5);
-            context.fillText((i + 18) * increment, wPointX - 2, wPointY + 4);
+            context.fillText((i + 50) * increment, wPointX - 2, wPointY + 4);
         }
         else {
             context.lineWidth = 2;
@@ -225,14 +225,14 @@ function draw(speed, budget) {
     }
     var numOfSegments = speed / increment;
     var numOfSegmentsForLimit = budget / increment;
-    numOfSegments = numOfSegments - 18;
-    numOfSegmentsForLimit = numOfSegmentsForLimit - 18
-    angle = Math.PI / 30 * numOfSegments;
+    numOfSegments = numOfSegments - 50;
+    numOfSegmentsForLimit = numOfSegmentsForLimit - 50
+    angle = Math.PI / 60 * numOfSegments;
     sineAngle = Math.sin(angle);
     cosAngle = -Math.cos(angle);
     var pointX = sineAngle * (3 / 4 * radius);
     var pointY = cosAngle * (3 / 4 * radius);
-    angleLimit = Math.PI / 30 * numOfSegmentsForLimit;
+    angleLimit = Math.PI / 60 * numOfSegmentsForLimit;
     sineAngleLimit = Math.sin(angleLimit);
     cosAngleLimit = -Math.cos(angleLimit);
     var pointXLimit = sineAngleLimit * radius;
