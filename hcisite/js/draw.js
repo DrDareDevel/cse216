@@ -119,7 +119,7 @@ function loadup()
 		newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/5.0)*1000.0*cost;
     }
 	else {
-		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32.0)/1.8)-21.1))/5.0)*1000.0*cost;
+		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32.0)/1.8)-21.1))/2.0)*1000.0*cost;
 	}
 	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
@@ -158,7 +158,7 @@ function redraw()
 		newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/5.0)*1000.0*cost;
     }
 	else {
-		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32)/1.8)-21.1))/5.0)*1000*cost;
+		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32)/1.8)-21.1))/2.0)*1000*cost;
 	}
 	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
     newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
