@@ -20,7 +20,9 @@
         function stopRKey(evt) {
             var evt = (evt) ? evt : ((event) ? event : null);
             var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
-            if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+            if ((evt.keyCode == 13) && (node.type == "text")) {
+                return false;
+            }
         }
 
         document.onkeypress = stopRKey;
@@ -37,6 +39,7 @@
             background-repeat: no-repeat;
             background-color: black;
         }
+
         #container {
             width: inherit;
             height: inherit;
@@ -44,6 +47,7 @@
             padding: 0;
             background-color: pink;
         }
+
         table {
             border: 1px solid black;
             text-align: center;
@@ -57,24 +61,29 @@
             text-align: center;
             background-color: #33ccff;
         }
+
         input {
             display: inline-block;
         }
-        lastIn{
+
+        lastIn {
             margin-left: 10px;
         }
     </style>
 </head>
 <body onload="loadup();">
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
-<strong><font size="16"><center><font color=" #59ea54 ">CSE 216 - Smart Home Dashboard </font></center></font></strong>
+<strong><font size="16">
+    <center><font color=" #59ea54 ">CSE 216 - Smart Home Dashboard </font></center>
+</font></strong>
 <div style="border-spacing: 0px;">
     <a href="control.html">Control</a><br>
     <a href="treatment.html">Treatment</a><br>

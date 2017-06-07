@@ -43,7 +43,7 @@ hr {
     height: 1px;
     border: 0;
     /*border-top: 1px solid #ccc;
-    margin: 1em 0; Francesco*/ 
+    margin: 1em 0; Francesco*/
     padding: 0;
 }
 
@@ -119,7 +119,7 @@ textarea {
  * Hide visually and from screen readers
  */
 
- 
+
 .hidden {
     display: none !important;
 }
@@ -157,8 +157,7 @@ textarea {
 }
 
 
- * Hide visually and from screen readers, but maintain layout
- */
+ /* Hide visually and from screen readers, but maintain layout */
 
 .invisible {
     visibility: hidden;

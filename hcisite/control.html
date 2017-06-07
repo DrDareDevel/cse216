@@ -20,7 +20,9 @@
         function stopRKey(evt) {
             var evt = (evt) ? evt : ((event) ? event : null);
             var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
-            if ((evt.keyCode == 13) && (node.type=="text"))  {return false;}
+            if ((evt.keyCode == 13) && (node.type == "text")) {
+                return false;
+            }
         }
 
         document.onkeypress = stopRKey;
@@ -37,6 +39,7 @@
             background-repeat: no-repeat;
             background-color: black;
         }
+
         #container {
             width: inherit;
             height: inherit;
@@ -44,6 +47,7 @@
             padding: 0;
             background-color: pink;
         }
+
         table {
             border: 1px solid black;
             text-align: center;
@@ -57,87 +61,127 @@
             text-align: center;
             background-color: #33ccff;
         }
+
         input {
             display: inline-block;
         }
-        lastIn{
+
+        lastIn {
             margin-left: 10px;
         }
     </style>
 </head>
 <body onload="loadup();">
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
-<strong><font size="16"><center><font color=" #59ea54 ">CSE 216 - Smart Home Dashboard </font></center></font></strong>
+<strong><font size="16">
+    <center><font color=" #59ea54 ">CSE 216 - Smart Home Dashboard </font></center>
+</font></strong>
 <div style="border-spacing: 0px;">
-   <form action="control.html">
-    <table style="border-spacing: 0px;" >
-        <tr>
-            <th> Season</th><th> <input type="text" name="season" id="season" value="Summer" style="text-align:center;" onchange="redraw();"></th>
-        </tr>
-        <tr>
-            <th> Day </th><th><input type="text" name="day" id="day" value="1" maxlength="20" style="text-align:center;" onchange="redraw();" readonly></th>
-        </tr>
-    </table>
+    <form action="control.html">
+        <table style="border-spacing: 0px;">
+            <tr>
+                <th> Season</th>
+                <th><input type="text" name="season" id="season" value="Summer" style="text-align:center;"
+                           onchange="redraw();"></th>
+            </tr>
+            <tr>
+                <th> Day</th>
+                <th><input type="text" name="day" id="day" value="1" maxlength="20" style="text-align:center;"
+                           onchange="redraw();" readonly></th>
+            </tr>
+        </table>
 
- 
+
         <input type="hidden" name="nextDay" id="nextDay" value="7">
         <input type="hidden" name="newTotal" id="newTotal" value="0">
         <input type="hidden" name="price" id="price" value="0.1635 KW/h">
 
-		<table>
-        <tr>
-            <th>Budget [$]</th><th><input type="text" name="budget" id="budget" value="60" style="text-align:center;" onchange="redraw();"></th>
-        </tr>
-            <tr><th>Balance [$]</th><th><input type="text" name="total" id="total" value="0" style="text-align:center;" readonly></th></tr>
-		</table><br>
+        <table>
+            <tr>
+                <th>Budget [$]</th>
+                <th><input type="text" name="budget" id="budget" value="60" style="text-align:center;"
+                           onchange="redraw();"></th>
+            </tr>
+            <tr>
+                <th>Balance [$]</th>
+                <th><input type="text" name="total" id="total" value="0" style="text-align:center;" readonly></th>
+            </tr>
+        </table>
+        <br>
 
         <table>
             <tr>
-                <th> Home Appliances </th><th> Hours per day</th><th> Temp Set Point (F)</th>
+                <th> Home Appliances</th>
+                <th> Hours per day</th>
+                <th> Temp Set Point (F)</th>
             </tr>
             <tr>
-                <td>Stove Top - $</td><td><input type="text" name="stove_h" id="stove_h" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td>Stove Top - $</td>
+                <td><input type="text" name="stove_h" id="stove_h" value="1" size="17" style="text-align:center;"
+                           onchange="redraw();"></td>
                 <td></td>
             </tr>
             <tr>
-                <td>Microwave - $</td><td><input type="text" name="micro_h" id="micro_h" value="0.2" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td>Microwave - $</td>
+                <td><input type="text" name="micro_h" id="micro_h" value="0.2" size="17" style="text-align:center;"
+                           onchange="redraw();"></td>
                 <td></td>
             </tr>
             <tr>
-                <td>TV LCD - $</td><td><input type="text" name="tv_h" id="tv_h" value="3" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td>TV LCD - $</td>
+                <td><input type="text" name="tv_h" id="tv_h" value="3" size="17" style="text-align:center;"
+                           onchange="redraw();"></td>
                 <td></td>
             </tr>
             <tr>
-                <td>HVAC - $$$</td><td><input type="text" name="hvac_h" id="hvac_h" value="3" size="17" style="text-align:center;" onchange="redraw();"></td>
-                <td>70 <input type="range" data-show-value="true" name="hvac_set" id="hvac_set" min="70" value="72" max="80" size="17" style="text-align:center;" onchange="redraw();" /> 80</td>
+                <td>HVAC - $$$</td>
+                <td><input type="text" name="hvac_h" id="hvac_h" value="3" size="17" style="text-align:center;"
+                           onchange="redraw();"></td>
+                <td>
+                    <span id="hvac_value">72</span><br/>
+                    70 <input type="range" name="hvac_set" id="hvac_set" min="70" value="72" max="80" size="17"
+                              style="text-align:center;" onchange="show_hvac_value(this.value);redraw();"/> 80
+                </td>
             </tr>
             <tr>
-                <td>Water Heater - $$</td><td></td>
-                <td>120 <input type="range" data-show-value="true" name="wh_set" id="wh_set"  min="120" value="160" max="180" size="17" style="text-align:center;" onchange="redraw();" /> 180</td>
+                <td>Water Heater - $$</td>
+                <td></td>
+                <td>
+                    <span id="wh_value">160</span><br/>
+                    120 <input type="range" name="wh_set" id="wh_set" min="120" value="160" max="180" size="17"
+                               style="text-align:center;" onchange="show_wh_value(this.value);redraw();"/> 180
+                </td>
             </tr>
         </table>
 
         <br>
         <table>
             <tr>
-                <th> Home Appliances </th><th> Numbers per Day </th>
+                <th> Home Appliances</th>
+                <th> Numbers per Day</th>
             </tr>
             <tr>
-                <td>Baths - $$</td><td><input type="text" name="bath_n" id="bath_n" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td>Baths - $$</td>
+                <td><input type="text" name="bath_n" id="bath_n" value="1" size="17" style="text-align:center;"
+                           onchange="redraw();"></td>
             </tr>
             <tr>
-                <td>Dish Washer - $$</td><td><input type="text" name="wash_n" id="wash_n" value="1" size="17" style="text-align:center;" onchange="redraw();"></td>
+                <td>Dish Washer - $$</td>
+                <td><input type="text" name="wash_n" id="wash_n" value="1" size="17" style="text-align:center;"
+                           onchange="redraw();"></td>
             </tr>
         </table>
         <br>
-        <lastIn><input type="submit" value="Next Week - Rate Comfort [1-5 Stars]" onclick="necxtweek();" margin= ></lastIn>
+        <lastIn><input type="submit" value="Next Week - Rate Comfort [1-5 Stars]" onclick="necxtweek();" margin=>
+        </lastIn>
     </form>
 </div>
 </body>

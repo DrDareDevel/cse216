@@ -2,27 +2,26 @@
  * Created by sean on 5/29/17.
  */
 
-function getQueryVariable(variable)
-{
+function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
     var vars = query.split("&");
-    for (var i=0;i<vars.length;i++) {
+    for (var i = 0; i < vars.length; i++) {
         var pair = vars[i].split("=");
-        if(pair[0] == variable){return pair[1];}
+        if (pair[0] == variable) {
+            return pair[1];
+        }
     }
-    return(false);
+    return (false);
 }
 
-function necxtweek()
-{
-    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value)+ Math.random()*4 - 2;
+function necxtweek() {
+    document.getElementById("total").value = parseFloat(document.getElementById("newTotal").value) + Math.random() * 4 - 2;
 }
 
-function loadup()
-{
+function loadup() {
     var total = parseFloat(document.getElementById("total").value);
     var day = document.getElementById("day").value;
-	var season = document.getElementById("season").value;
+    var season = document.getElementById("season").value;
     var stove_h = parseFloat(document.getElementById("stove_h").value);
     var micro_h = parseFloat(document.getElementById("micro_h").value);
     var tv_h = parseFloat(document.getElementById("tv_h").value);
@@ -31,26 +30,26 @@ function loadup()
     var wh_set = parseFloat(document.getElementById("wh_set").value);
     var bath_n = parseFloat(document.getElementById("bath_n").value);
     var wash_n = parseFloat(document.getElementById("wash_n").value);
-	var estimate;
+    var estimate;
 
     var hasTotal = getQueryVariable("total");
     if (hasTotal != false) {
         total = parseFloat(hasTotal);
     }
     document.getElementById("total").value = total.toFixed(2);
-	
-	var hasSeason = getQueryVariable("season");
+
+    var hasSeason = getQueryVariable("season");
     if (hasSeason != false) {
         season = hasSeason;
     }
     document.getElementById("season").value = season;
 
     var hasDay = getQueryVariable("nextDay");
-    if (hasDay != false){
+    if (hasDay != false) {
         day = parseInt(hasDay);
     }
     document.getElementById("day").value = day;
-    document.getElementById("nextDay").value = parseInt(day)+7;
+    document.getElementById("nextDay").value = parseInt(day) + 7;
 
     var hasStove_h = getQueryVariable("stove_h");
     if (hasStove_h != false) {
@@ -101,7 +100,7 @@ function loadup()
     }
     document.getElementById("wash_n").value = wash_n;
 
-    var cost = parseFloat(document.getElementById("price").value)/1000.0;
+    var cost = parseFloat(document.getElementById("price").value) / 1000.0;
 
     var budget = parseFloat(document.getElementById("budget").value);
     var hasBudget = getQueryVariable("budget");
@@ -112,28 +111,27 @@ function loadup()
 
     var outside_temp = 86.0;
     var newTotal = 0.0;
-    newTotal = newTotal+1500*stove_h*cost;
-    newTotal = newTotal+1500*micro_h*cost;
-    newTotal = newTotal+234*tv_h*cost;
-	if(season === "Summer"){
-		newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/5.0)*1000.0*cost;
+    newTotal = newTotal + 1500 * stove_h * cost;
+    newTotal = newTotal + 1500 * micro_h * cost;
+    newTotal = newTotal + 234 * tv_h * cost;
+    if (season === "Summer") {
+        newTotal = newTotal + (hvac_h / 24.0) * (((5.76 * ((outside_temp - 32.0) / 1.8)) - 100.12) + (((5.76 * ((outside_temp - 32.0) / 1.8)) - 100.12) * (23.9 - ((hvac_set - 32.0) / 1.8))) / 5.0) * 1000.0 * cost;
     }
-	else {
-		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32.0)/1.8)-21.1))/2.0)*1000.0*cost;
-	}
-	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
-    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
-    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
-	estimate = newTotal*(29-day)+total;
-    newTotal = newTotal*7+total;
+    else {
+        newTotal = newTotal + (hvac_h / 24.0) * (((-0.7 * ((59 - 32.0) / 1.8)) + 16.84) + (((-0.7 * ((59 - 32.0) / 1.8)) + 16.84) * (((hvac_set - 32.0) / 1.8) - 21.1)) / 2.0) * 1000.0 * cost;
+    }
+    newTotal = newTotal + (333.6 * (wh_set - 50) * 0.000293 * 99 / 100 * 1000 / 40) * cost;
+    newTotal = newTotal + (333.6 * (wh_set - 50) * 0.000293 * 99 / 100 * 1000 / 40) * cost * 15 * bath_n;
+    newTotal = newTotal + (333.6 * (wh_set - 50) * 0.000293 * 99 / 100 * 1000 / 40) * cost * 7 * wash_n;
+    estimate = newTotal * (29 - day) + total;
+    newTotal = newTotal * 7 + total;
 
     document.getElementById("newTotal").value = newTotal;
-	document.getElementById("estimate").value = estimate.toFixed(2);
-    draw(estimate,budget);
+    document.getElementById("estimate").value = estimate.toFixed(2);
+    draw(estimate, budget);
 }
 
-function redraw()
-{
+function redraw() {
     var total = parseFloat(document.getElementById("total").value);
     var stove_h = parseFloat(document.getElementById("stove_h").value);
     var micro_h = parseFloat(document.getElementById("micro_h").value);
@@ -143,47 +141,46 @@ function redraw()
     var wh_set = parseFloat(document.getElementById("wh_set").value);
     var bath_n = parseFloat(document.getElementById("bath_n").value);
     var wash_n = parseFloat(document.getElementById("wash_n").value);
-    var cost = parseFloat(document.getElementById("price").value)/1000.0;
+    var cost = parseFloat(document.getElementById("price").value) / 1000.0;
     var budget = parseFloat(document.getElementById("budget").value);
     var outside_temp = 86.0;
-	var season = document.getElementById("season").value;
-	var day = document.getElementById("day").value;
-	var estimate;
+    var season = document.getElementById("season").value;
+    var day = document.getElementById("day").value;
+    var estimate;
 
     var newTotal = 0.0;
-    newTotal = newTotal+1500.0*stove_h*cost;
-    newTotal = newTotal+1500.0*micro_h*cost;
-    newTotal = newTotal+234.0*tv_h*cost;
-    if(season === "Summer"){
-		newTotal = newTotal+(hvac_h/24.0)*(((5.76*((outside_temp-32.0)/1.8))-100.12)+(((5.76*((outside_temp-32.0)/1.8))-100.12)*(23.9-((hvac_set-32.0)/1.8)))/5.0)*1000.0*cost;
+    newTotal = newTotal + 1500.0 * stove_h * cost;
+    newTotal = newTotal + 1500.0 * micro_h * cost;
+    newTotal = newTotal + 234.0 * tv_h * cost;
+    if (season === "Summer") {
+        newTotal = newTotal + (hvac_h / 24.0) * (((5.76 * ((outside_temp - 32.0) / 1.8)) - 100.12) + (((5.76 * ((outside_temp - 32.0) / 1.8)) - 100.12) * (23.9 - ((hvac_set - 32.0) / 1.8))) / 5.0) * 1000.0 * cost;
     }
-	else {
-		newTotal = newTotal+(hvac_h/24.0)*(((-0.7*((59-32.0)/1.8))+16.84)+(((-0.7*((59-32.0)/1.8))+16.84)*(((hvac_set-32)/1.8)-21.1))/2.0)*1000*cost;
-	}
-	newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost;
-    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*15*bath_n;
-    newTotal = newTotal+(333.6*(wh_set-50)*0.000293*99/100*1000/40)*cost*7*wash_n;
-	estimate = newTotal*(29-day)+total;
-    newTotal = newTotal*7+total;
+    else {
+        newTotal = newTotal + (hvac_h / 24.0) * (((-0.7 * ((59 - 32.0) / 1.8)) + 16.84) + (((-0.7 * ((59 - 32.0) / 1.8)) + 16.84) * (((hvac_set - 32) / 1.8) - 21.1)) / 2.0) * 1000 * cost;
+    }
+    newTotal = newTotal + (333.6 * (wh_set - 50) * 0.000293 * 99 / 100 * 1000 / 40) * cost;
+    newTotal = newTotal + (333.6 * (wh_set - 50) * 0.000293 * 99 / 100 * 1000 / 40) * cost * 15 * bath_n;
+    newTotal = newTotal + (333.6 * (wh_set - 50) * 0.000293 * 99 / 100 * 1000 / 40) * cost * 7 * wash_n;
+    estimate = newTotal * (29 - day) + total;
+    newTotal = newTotal * 7 + total;
 
     document.getElementById("newTotal").value = newTotal;
-	document.getElementById("estimate").value = estimate.toFixed(2);
-    draw(estimate,budget);
+    document.getElementById("estimate").value = estimate.toFixed(2);
+    draw(estimate, budget);
 }
 
-function draw(speed,budget)
-{
+function draw(speed, budget) {
     var canvas = document.getElementById("myCanvas");
     var context = canvas.getContext("2d");
-    context.clearRect(0,0,canvas.width, canvas.height);
+    context.clearRect(0, 0, canvas.width, canvas.height);
     var centerX = canvas.width / 2;
     var centerY = canvas.height / 2;
     var radius = canvas.height / 2 - 20;
 
     context.beginPath();
-    context.arc(centerX, centerY, radius, Math.PI*0.1, Math.PI*-1.1, true);
+    context.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
 
-    var gradience = context.createRadialGradient(centerX, centerY, radius-radius/2, centerX, centerY, radius-radius/8);
+    var gradience = context.createRadialGradient(centerX, centerY, radius - radius / 2, centerX, centerY, radius - radius / 8);
     gradience.addColorStop(0, '#ff9000');
     gradience.addColorStop(1, '#000000');
 
@@ -194,75 +191,73 @@ function draw(speed,budget)
 
     context.beginPath();
     context.strokeStyle = '#ffff00';
-    context.translate(centerX,centerY);
+    context.translate(centerX, centerY);
     var increment = 3;
-    context.font="15px Helvetica";
-    for (var i=-18; i<=18; i++)
-    {
-        var angle = Math.PI/30*i;
+    context.font = "15px Helvetica";
+    for (var i = -18; i <= 18; i++) {
+        var angle = Math.PI / 30 * i;
         var sineAngle = Math.sin(angle);
         var cosAngle = -Math.cos(angle);
 
         if (i % 5 == 0) {
             context.lineWidth = 8;
-            var iPointX = sineAngle *(radius -radius/4);
-            var iPointY = cosAngle *(radius -radius/4);
-            var oPointX = sineAngle *(radius -radius/7);
-            var oPointY = cosAngle *(radius -radius/7);
+            var iPointX = sineAngle * (radius - radius / 4);
+            var iPointY = cosAngle * (radius - radius / 4);
+            var oPointX = sineAngle * (radius - radius / 7);
+            var oPointY = cosAngle * (radius - radius / 7);
 
-            var wPointX = sineAngle *(radius -radius/2.5);
-            var wPointY = cosAngle *(radius -radius/2.5);
-            context.fillText((i+18)*increment,wPointX-2,wPointY+4);
+            var wPointX = sineAngle * (radius - radius / 2.5);
+            var wPointY = cosAngle * (radius - radius / 2.5);
+            context.fillText((i + 18) * increment, wPointX - 2, wPointY + 4);
         }
-        else
-        {
+        else {
             context.lineWidth = 2;
-            iPointX = sineAngle *(radius -radius/5.5);
-            iPointY = cosAngle *(radius -radius/5.5);
-            oPointX = sineAngle *(radius -radius/7);
-            oPointY = cosAngle *(radius -radius/7);
+            iPointX = sineAngle * (radius - radius / 5.5);
+            iPointY = cosAngle * (radius - radius / 5.5);
+            oPointX = sineAngle * (radius - radius / 7);
+            oPointY = cosAngle * (radius - radius / 7);
         }
         context.beginPath();
-        context.moveTo(iPointX,iPointY);
-        context.lineTo(oPointX,oPointY);
+        context.moveTo(iPointX, iPointY);
+        context.lineTo(oPointX, oPointY);
         context.stroke();
         context.closePath();
     }
-    var numOfSegments = speed/increment;
-    var numOfSegmentsForLimit = budget/increment;
-    numOfSegments = numOfSegments -18;
-    numOfSegmentsForLimit = numOfSegmentsForLimit -18
-    angle = Math.PI/30*numOfSegments;
+    var numOfSegments = speed / increment;
+    var numOfSegmentsForLimit = budget / increment;
+    numOfSegments = numOfSegments - 18;
+    numOfSegmentsForLimit = numOfSegmentsForLimit - 18
+    angle = Math.PI / 30 * numOfSegments;
     sineAngle = Math.sin(angle);
     cosAngle = -Math.cos(angle);
-    var pointX = sineAngle *(3/4*radius);
-    var pointY = cosAngle *(3/4*radius);
-    angleLimit = Math.PI/30*numOfSegmentsForLimit;
+    var pointX = sineAngle * (3 / 4 * radius);
+    var pointY = cosAngle * (3 / 4 * radius);
+    angleLimit = Math.PI / 30 * numOfSegmentsForLimit;
     sineAngleLimit = Math.sin(angleLimit);
     cosAngleLimit = -Math.cos(angleLimit);
-    var pointXLimit = sineAngleLimit *radius;
-    var pointYLimit = cosAngleLimit *radius;
+    var pointXLimit = sineAngleLimit * radius;
+    var pointYLimit = cosAngleLimit * radius;
 
     context.beginPath();
     context.strokeStyle = '#000000';
-    context.arc(0, 0, 19, 0, 2*Math.PI, true);
+    context.arc(0, 0, 19, 0, 2 * Math.PI, true);
     context.fill();
     context.closePath();
 
     context.beginPath();
-    context.lineWidth=6;
-    context.moveTo(0,0);
-    context.lineTo(pointX,pointY);
+    context.lineWidth = 6;
+    context.moveTo(0, 0);
+    context.lineTo(pointX, pointY);
     context.stroke();
     context.closePath();
 
     context.beginPath();
     context.strokeStyle = '#FF0000';
-    context.lineWidth=6;
-    context.moveTo(0,0);
-    context.lineTo(pointXLimit,pointYLimit);
+    context.lineWidth = 6;
+    context.moveTo(0, 0);
+    context.lineTo(pointXLimit, pointYLimit);
     context.stroke();
     context.closePath();
     context.restore();
-    context.translate(-centerX,-centerY);
+    context.translate(-centerX, -centerY);
 }
